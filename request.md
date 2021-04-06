@@ -1,8 +1,8 @@
 # Content
 
-1. [intro](Intro)
+1. [intro](#Introduction)
 
 
 
 
-## Intro
+## Introduction
