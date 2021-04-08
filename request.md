@@ -2,7 +2,7 @@
 
 1. [introduction](#Introduction)
 2. [HTTP-Requests](#HTTP-Requests)
-3. [XHR GET Requests](#XHR GET Requests)
+3. [XHR GET Requests](#XHR-GET-Requests)
 
 
 ## Introduction
@@ -38,6 +38,12 @@ JavaScript uses an event loop to handle asynchronous function calls.
 
 When a program is run, function calls are made and added to a stack. The functions that make requests that need to wait for servers to respond then get sent to a separate queue. Once the stack has cleared, then the functions in the queue are executed.
 
+## XHR GET Requests
+
+**how to make an XHR GET request**
 ![image](https://user-images.githubusercontent.com/55635400/114035013-65bfaf00-9887-11eb-9500-49af17ea2b5f.png)
 
-## XHR GET Requests
+Asynchronous JavaScript and XML (AJAX), enables requests to be made after the initial page load. Initially, AJAX was used only for XML formatted data, now it can be used to make requests that have many different formats.
+
+Similarly, the XMLHttpRequest (XHR) API, named for XML, can be used to make many kinds of requests and supports other forms of data.
+
