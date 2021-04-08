@@ -47,3 +47,17 @@ Asynchronous JavaScript and XML (AJAX), enables requests to be made after the in
 
 Similarly, the XMLHttpRequest (XHR) API, named for XML, can be used to make many kinds of requests and supports other forms of data.
 
+Boilerplate code for an AJAX GET request using an XMLHttpRequest object.
+
+```javascript
+const xhr = new XMLHttpRequest()
+const url = 'https://api-to-call.com/endpoint';
+xhr.responseType = 'json';
+xhr.onreadystatechange = () => {
+  if(xhr.readyState === XMLHttpRequest.DONE) {
+    return xhr.response;
+  }
+}
+xhr.open('GET', url)
+xhr.send()
+```
