@@ -10,3 +10,13 @@
 HTTP is the command language that the devices on both sides of the connection must follow in order to communicate.
 
 The transfer of resources happens using `TCP` (<ins>Transmission Control Protocol</ins>).
+
+`URL` - Uniform Resource Locator.
+
+The GET request contains the following text:
+
+```
+GET / HTTP/1.1
+Host: www.codecademy.com
+```
+
