@@ -3,6 +3,7 @@
 1. [introduction](#Introduction)
 2. [HTTP-Requests](#HTTP-Requests)
 3. [XHR GET Requests](#XHR-GET-Requests)
+4. [XHR POST Requests](#XHR-POST-Requests)
 
 
 ## Introduction
@@ -61,3 +62,14 @@ xhr.onreadystatechange = () => {
 xhr.open('GET', url)
 xhr.send()
 ```
+
+A **query string** contains additional information to be sent with a request. A query string is separated from the URL using a `?` character. After ?, you can then create a parameter which is a key value pair joined by a =.  
+`'https://api.datamuse.com/words?key=value'`
+
+If you want to add an additional parameter you will have to use the & character to separate your parameters.  
+`'https://api.datamuse.com/words?key=value&anotherKey=anotherValue'`
+
+
+## XHR POST Requests
+
+![image](https://user-images.githubusercontent.com/55635400/114509234-f4dd1600-9c3d-11eb-9b18-14382254b46e.png)
