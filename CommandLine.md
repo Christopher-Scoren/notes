@@ -62,6 +62,15 @@ A filesystem organizes a computer’s files and directories into a tree structur
 drwxr-xr-x 4  cc  eng  4096 Jun 24 16:51  comedy  
 drwxr-xr-x 6  cc  eng  4096 Jun 24 16:51  drama  
 -rw-r--r-- 1  cc  eng     0 Jun 24 16:51  genres.txt  
+>> Here’s what each column means:
+>> 1. Access rights. These indicate the read, write, and execute permissions on the file or directory allowed to the owner, the group, and all users. You can read more about file permissions.  
+>> 2. Number of hard links. This number counts the number of child directories and files. This number includes the parent directory link (..) and current directory link (.).  
+>> 3. The username of the file’s owner. Here the username is cc.  
+>> 4. The name of the group that owns the file. Here the group name is eng.  
+>> 5. The size of the file in bytes.  
+>> 6. The date & time that the file was last modified.  
+>> 7. The name of the file or directory.  
+
 
 ## Redirecting Input and Output
 
