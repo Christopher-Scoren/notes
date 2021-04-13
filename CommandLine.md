@@ -57,7 +57,11 @@ A filesystem organizes a computer’s files and directories into a tree structur
 `-l` - lists all contents of a directory in long format, as well as the file permissions
 `-t` - orders files and directories by the time they were last modified.
 
-
+* `ls -l`
+>drwxr-xr-x 5  cc  eng  4096 Jun 24 16:51  action  
+drwxr-xr-x 4  cc  eng  4096 Jun 24 16:51  comedy  
+drwxr-xr-x 6  cc  eng  4096 Jun 24 16:51  drama  
+-rw-r--r-- 1  cc  eng     0 Jun 24 16:51  genres.txt  
 
 ## Redirecting Input and Output
 
