@@ -16,6 +16,8 @@ The `command line` is a text interface for the computer’s operating system. Yo
 Command line is text-based. It doesn't have a graphical interface
 ![image](https://user-images.githubusercontent.com/55635400/114563579-34c0ef00-9c78-11eb-8834-0948c81f91d7.png)
 
+`Bash`, or `the Bourne-Again SHell`, is a CLI that was created in 1989 by Brian Fox as a free software replacement for the Bourne Shell.  
+A `shell` is a specific kind of CLI. 
 
 ## Navigating the File System
 
@@ -24,14 +26,36 @@ A filesystem organizes a computer’s files and directories into a tree structur
 * The first directory in the filesystem is the root directory. It is the parent of all other directories and files in the filesystem.
 * Each parent directory can contain more child directories and files.
 
-Commands:  
-`ls` - “lists” all the files and directories inside of the directory
-`pwd` - print working directory
-`cd` - change directory
-> `$ cd 2015` When a file, directory, or program is passed into a command, it is called an argument. Here the 2015 directory is an argument for the cd command.
+### Commands  
+`ls` - “lists” all the files and directories inside of the directory  
+`pwd` - print working directory  
+`cd` - change directory  
+> `$ cd 2015` When a file, directory, or program is passed into a command, it is called an argument. Here the 2015 directory is an argument for the cd command.  
+> `$ cd jan/memory` - to avoid writing cd twice  
+> `cd ..` - to move up
+
+`mkdir` - making directories (folders)
+> `$ mkdir media` || `$ mkdir media/tv` - to create a dir when you are 1 level upper
+
+`touch` - creates a new file inside the working directory
+> `$ touch keyboard.txt`
+
+### Helper commands
+`clear` - clear your terminal It doesn’t change or undo your previous commands, it just clears them from the view. To see them you need to scroll up.  
+`tab` - to autocomplete your command. When you are typing the name of an existing file or directory, you can use tab to finish the rest of the name.  
+`↑` and `↓` - to cycle through your previous commands.
 
 
 ## Viewing and changing the file system
+
+`Options` modify the behavior of commands.
+
+`ls -a` - displays all the files and directories, including those starting with a dot (.)  
+
+* more for ls:  
+`-a` - lists all contents, including hidden files and directories  
+`-l` - lists all contents of a directory in long format, as well as the file permissions
+`-t` - orders files and directories by the time they were last modified.
 
 
 
