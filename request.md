@@ -91,3 +91,103 @@ xhr.onreadystatechange = () => {
 xhr.open('POST', url);
 xhr.send(data);
 ```
+## fetch() GET Requests
+
+The fetch() function:
+
+![image](https://user-images.githubusercontent.com/55635400/114529697-e64d2980-9c52-11eb-8006-a6794b19a88f.png)
+
+Creates a request object that contains relevant information that an API needs.
+Sends that request object to the API endpoint provided.
+Returns a promise that ultimately resolves to a response object, which contains the status of the promise with information the API sent back.
+
+```js
+//boilerplate for fetch function
+
+fetch('https://api-to-call.com/endpoint').then(response => {
+  if(response.ok){
+    return response.json();
+  }
+  throw new Error('Request failed!');
+}, networkError => {
+  console.log(networkError.message);
+}).then(jsonResponse => {
+  return jsonResponse;
+});
+```
+## fetch() POST
+
+![image](https://user-images.githubusercontent.com/55635400/114533249-5f01b500-9c56-11eb-8517-22c8c14d8a45.png)
+
+```js
+//boilerplate
+
+fetch('https://api-to-call.com/endpoint', {
+  method: 'POST',
+  body: JSON.stringify({id: '200'})
+}).then(response => {
+  if(response.ok){
+    return response.json();
+  }
+  throw new Error('Request failed!');
+}, networkError => {
+  console.log(networkError.message);
+}).then(jsonResponse => {
+  return jsonResponse;
+})
+```
+## async GET Requests
+
+![image](https://user-images.githubusercontent.com/55635400/114544409-3fbd5480-9c63-11eb-9807-96846a3f40b8.png)
+
+```js
+//boilerplate
+
+const getData = async () => {
+  try {
+    const response = await fetch('https://api-to-call.com/endpoint');
+    if (response.ok){
+      const jsonResponse = await response.json();
+      return jsonResponse;
+    }
+    throw new Error('Request failed!');
+  } catch (error){
+    console.log(error);
+  }
+}
+```
+
+## async POST Requests
+
+![image](https://user-images.githubusercontent.com/55635400/114545934-3af9a000-9c65-11eb-9dcb-de0b735998c9.png)
+
+```js
+//boilerplate
+
+const getData = async () => {
+  try {
+    const response = await fetch('https://api-to-call.com/endpoint', {
+      method: 'POST',
+      body: JSON.stringify({id: 200})
+    });
+    if (response.ok){
+      const jsonResponse = await response.json();
+      return jsonResponse;
+    }
+    throw new Error('Request failed!');
+  } catch(error){
+    console.log(error);
+  }
+}
+```
+## reviewing Requests
+
+1. GET and POST requests can be created a variety of ways.
+2. Use AJAX to asynchronously request data from APIs. fetch() and async/await are new functionalities developed in ES6 (promises) and ES8 respectively.
+3. Promises are a new type of JavaScript object that represent data that will eventually be returned from a request.
+4. fetch() is a web API that can be used to create requests. fetch() will return promises.
+5. We can chain .then() methods to handle promises returned by fetch().
+6. The .json() method converts a returned promise to a JSON object.
+7. async is a keyword that is used to create functions that will return promises.
+8. await is a keyword that is used to tell a program to continue moving through the message queue while a promise resolves.
+9. await can only be used within functions declared with async.
