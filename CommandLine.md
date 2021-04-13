@@ -71,6 +71,26 @@ drwxr-xr-x 6  cc  eng  4096 Jun 24 16:51  drama
 >> 6. The date & time that the file was last modified.  
 >> 7. The name of the file or directory.  
 
+Multiple options can be used together, like `ls -alt`.
+
+`cat` - outputs the contents of a specified file. 
+> `cat action/superwoman.txt`
+
+`cp` - copies files or directories.
+> `cp source.txt destination.txt` or `cp source.txt destination/`
+> To copy multiple files into a directory, use cp with a list of source files as the first arguments, and the destination directory as the last argument: `cp file1.txt file2.txt my_directory/`
+
+`wildcards` - special characters like * to select groups of files  
+`*` - `cp * my_directory/` - to copy all files in the current working directory into another directory.  
+`cp w*.txt my_directory/`  - selects all files in the working directory starting with “w” (prefix) and ending with “.txt” (suffix), and copies them to my_directory/.
+
+`mv` - moves files 
+>`mv my_file.txt my_directory/` or `mv my_file_1.txt my_file_2.txt my_directory/` - to move one or several files
+>`mv file_origin.txt file_renamed.txt` - to rename a file
+
+`rm` - deletes files and directories
+>`rm unwanted_file.txt`
+* `-r` -  stands for “recursive,” and it’s used to delete a directory and all of its child directories.
 
 ## Redirecting Input and Output
 
