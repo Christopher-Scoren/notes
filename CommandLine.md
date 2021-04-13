@@ -53,9 +53,9 @@ A filesystem organizes a computer’s files and directories into a tree structur
 `ls -a` - displays all the files and directories, including those starting with a dot (.)  
 
 * more for ls:  
-`-a` - lists all contents, including hidden files and directories  
-`-l` - lists all contents of a directory in long format, as well as the file permissions
-`-t` - orders files and directories by the time they were last modified.
+ * `-a` - lists all contents, including hidden files and directories  
+ * `-l` - lists all contents of a directory in long format, as well as the file permissions  
+ * `-t` - orders files and directories by the time they were last modified.
 
 * `ls -l`
 >drwxr-xr-x 5  cc  eng  4096 Jun 24 16:51  action  
