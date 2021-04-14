@@ -144,10 +144,67 @@ Multiple options can be used together, like `ls -alt`.
 >`$ grep -i America continents.txt` - grep searched for capital or lowercase strings that match “America” in continents.txt.
 
 * `grep -R` - searches all files in a directory and outputs filenames and lines containing matched results. -R stands for “recursive”.
->```$ grep -R Arctic /home/ccuser/workspace/geography
- 
+```
+$ grep -R Arctic /home/ccuser/workspace/geography
 /home/ccuser/workspace/geography/deserts.txt:Arctic Desert
-/home/ccuser/workspace/geography/oceans.txt:Arctic Ocean```
+/home/ccuser/workspace/geography/oceans.txt:Arctic Ocean
+```
+* `grep -Rl` searches all files in a directory and outputs only filenames with matched results (so no lines). l (a lowercase L, not a capital i) stands for “files with matches.”
+
+`sed` - stands for “stream editor.” It accepts standard input and modifies it based on an expression, before displaying it as output data. It is similar to “find and replace.”
+>>`sed 's/snow/rain/' forests.txt`  
+>`s`: stands for “substitution.” It is always used when using sed for substitution. It will only replace the first instance of “snow” on a line.
+>`snow`: the search string, or the text to find.
+>`rain`: the replacement string, or the text to add in place  
+>>`sed 's/snow/rain/g' forests.txt`
+>`g` expression, meaning “global.” - all instances of “snow” on a line will be turned to “rain.”
 
 
 ## Configuring the Environment
+
+`environment` - session with all settings and preferences
+
+`nano` is a command line text editor. 
+>`$ nano hello.txt`
+
+commands in nano editor:  
+![image](https://user-images.githubusercontent.com/55635400/114768515-a03ab780-9d71-11eb-9d41-50fb159b670b.png)  
+`^` = ctrl
+
+* Ctrl + O saves a file. O stands for output.  
+* Ctrl + X exits the nano program. X stands for exit.  
+* Ctrl + G opens a help menu.
+
+A `bash profile` is a file used to store environment settings for your terminal, and it’s accessible by the name `~/.bash_profile`.  
+When a session starts, it loads the contents of the bash profile before executing commands.
+
+* The ~ represents the user’s home directory.  
+* The . indicates a hidden file.  
+
+to open a bash profile: `nano ~/.bash_profile`
+>When you edit the bash profile, you can add commands to execute every time a new terminal session is started.
+
+`source ~/.bash_profile` - To activate the changes made in ~/.bash_profile for the current session
+
+The `alias` command allows you to create keyboard shortcuts, or aliases, for commonly used commands.
+
+`alias pd="pwd"` -  creates the alias pd for the pwd command, which is then saved in the bash profile.  
+>`alias ll="ls -la"` and `alias hy="history"`
+
+`Environment variables` are variables that can be used across commands and programs and hold information about the environment.
+>`export USER="Jane Doe"`  
+>>The line USER="Jane Doe" sets the environment variable USER to a name “Jane Doe”. Usually the USER variable is set to the name of the computer’s owner.  
+>>The line export makes the variable to be available to all child sessions initiated from the session you are in. This is a way to make the variable persist across programs.  
+>>At the command line, the command echo $USER returns the value of the variable. Note that $ is always used when returning a variable’s value. Here, the command echo $USER returns the name set for the variable.
+
+`PS1` is an environment variable that defines the makeup and style of the command prompt.  
+>`export PS1=">> "`  
+>>export PS1=">> " sets the command prompt variable and exports the variable. Here we change the default command prompt from $ to >>.  
+>>After using the source command, the command line displays the new command prompt.
+
+The `HOME` variable is an environment variable that displays the path of the home directory ~.
+>`$ echo $HOME`
+
+
+
+
