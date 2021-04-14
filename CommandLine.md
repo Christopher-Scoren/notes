@@ -143,7 +143,11 @@ Multiple options can be used together, like `ls -alt`.
 * `grep -i` enables the command to be case insensitive.  
 >`$ grep -i America continents.txt` - grep searched for capital or lowercase strings that match “America” in continents.txt.
 
-
+* `grep -R` - searches all files in a directory and outputs filenames and lines containing matched results. -R stands for “recursive”.
+>```$ grep -R Arctic /home/ccuser/workspace/geography
+ 
+/home/ccuser/workspace/geography/deserts.txt:Arctic Desert
+/home/ccuser/workspace/geography/oceans.txt:Arctic Ocean```
 
 
 ## Configuring the Environment
