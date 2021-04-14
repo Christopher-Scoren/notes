@@ -102,7 +102,7 @@ Multiple options can be used together, like `ls -alt`.
 `standard output`, abbreviated as stdout, is the information outputted after a process is run.  
 `standard error`, abbreviated as stderr, is an error message outputted by a failed process.
 
-* `>` command redirects the standard output to a file. 
+`>` command redirects the standard output to a file. 
 >`$ echo "Hello" > hello.txt`  
 >Here, "Hello" is entered as the standard input, and is then redirected to the file hello.txt 
 
@@ -110,6 +110,40 @@ Multiple options can be used together, like `ls -alt`.
 >`$ cat deserts.txt > forests.txt`
 >Here the standard output of cat deserts.txt is redirected to forests.txt.
 >> `>` overwrites all original content in forests.txt. When you view the output data by using cat on forests.txt, you will see only the contents of deserts.txt.
+
+`>>` -  takes the standard output of the command on the left and appends (adds) it to the file on the right.
+>`$ cat deserts.txt >> forests.txt`  
+>Here, the output data of forests.txt will contain the original contents of forests.txt with the content of deserts.txt appended to it.
+
+`<` - takes the standard input from the file on the right and inputs it into the program on the left.
+>`$ cat < deserts.txt`  
+>Here, deserts.txt is the standard input for the cat command. The standard output appears in the terminal.
+
+`|` - takes the standard output of the command on the left, and pipes it as standard input to the command on the right. You can think of this as “command to command” redirection.  
+>`$ cat volcanoes.txt | wc `  
+>cat volcanoes.txt becomes the standard input of wc. in turn, the wc command outputs the number of lines, words, and characters in volcanoes.txt, respectively.
+
+>`$ cat volcanoes.txt | wc | cat > islands.txt`
+>Multiple |s can be chained together. Here the standard output of cat volcanoes.txt is “piped” to the wc command. The standard output of wc is then “piped” to cat. Finally, the standard output of cat is redirected to islands.txt.
+
+`sort` -  takes the standard input and orders it alphabetically for the standard output (it doesn’t change the file itself).
+>`$ sort continents.txt`
+
+>`$ cat glaciers.txt | sort > sorted-glaciers.txt `  
+>Here, the command takes the standard output from cat glaciers.txt and “pipes” it to sort. The standard output of sort is redirected to a new file named sorted-glaciers.txt.
+
+`uniq` -  It filters out adjacent, duplicate lines in a file.  
+>`$ uniq deserts.txt `  
+>Here uniq deserts.txt filters out duplicates of "Sahara Desert", because its duplicate directly follows the previous instance. The “Kalahari Desert” duplicates are not adjacent, and thus remain.
+
+`grep` - stands for “global regular expression print.” It searches files for lines that match a pattern and then returns the results. It is also case sensitive.  
+>`$ grep America continents.txt `  
+>grep searched for anything that matched “America” in continents.txt.
+
+* `grep -i` enables the command to be case insensitive.  
+>`$ grep -i America continents.txt` - grep searched for capital or lowercase strings that match “America” in continents.txt.
+
+
 
 
 ## Configuring the Environment
