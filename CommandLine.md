@@ -94,6 +94,22 @@ Multiple options can be used together, like `ls -alt`.
 
 ## Redirecting Input and Output
 
+`echo` - accepts the string “Hello” as standard input, and echoes the string “Hello” back to the terminal as standard output.
+>$ echo "Hello"  
+>Hello
+
+`standard input`, abbreviated as stdin, is information inputted into the terminal through the keyboard or input device.  
+`standard output`, abbreviated as stdout, is the information outputted after a process is run.  
+`standard error`, abbreviated as stderr, is an error message outputted by a failed process.
+
+* `>` command redirects the standard output to a file. 
+>`$ echo "Hello" > hello.txt`  
+>Here, "Hello" is entered as the standard input, and is then redirected to the file hello.txt 
+
+* `>` - takes the standard output of the command on the left, and redirects it to the file on the right.
+>`$ cat deserts.txt > forests.txt`
+>Here the standard output of cat deserts.txt is redirected to forests.txt.
+>> `>` overwrites all original content in forests.txt. When you view the output data by using cat on forests.txt, you will see only the contents of deserts.txt.
 
 
 ## Configuring the Environment
