@@ -205,6 +205,13 @@ The `alias` command allows you to create keyboard shortcuts, or aliases, for com
 The `HOME` variable is an environment variable that displays the path of the home directory ~.
 >`$ echo $HOME`
 
+`PATH` is an environment variable that stores a list of directories separated by a colon. The PATH variable simply lists which directories contain scripts.  
+>`/home/ccuser/.gem/ruby/2.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin`  
+>>many commands are scripts stored in the /bin directory.  
+>>`/bin/pwd`  
+>>`/bin/ls`
 
-
+`env` - stands for “environment,” and returns a list of the environment variables for the current user.  
+env command returns a number of variables, including PATH, PWD, PS1, and HOME.
+>`env | grep PATH ` - To select the value of a particular environment variable, let’s say PATH
 
