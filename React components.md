@@ -143,9 +143,24 @@ class IceCreamGuy extends React.Component {
   }
 }
 ```
-this refers to an instance of IceCreamGuy. The less simple answer is that this refers to the object on which this‘s enclosing method
+this refers to an instance of IceCreamGuy. The less simple answer is that this refers to the object on which this‘s enclosing method  
+You don’t need those parentheses because .food is a getter method.
 
-
+### Event Listener in a Component
+```
+class MyClass extends React.Component {
+  myFunc() {
+    alert('Stop it.  Stop hovering.');
+  }
+ 
+  render() {
+    return (
+      <div onHover={this.myFunc}>
+      </div>
+    );
+  }
+}
+```
 
 
 
