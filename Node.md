@@ -2,6 +2,8 @@
 
 1.[Introduction](#Introduction)
 2.[NPM](#NPM)
+3.[Input and Output](#Input-and-Output)
+4.[Errors](#Errors)
 
 
 ## Introduction
@@ -76,17 +78,50 @@ console.log(tadpole.praise());
 
 `NPM`, which stands for Node Package Manager, is an online collection, or registry, of software. Developers can share code they’ve written to the registry or download code provided by other developers.
 
+When we download Node, the npm command-line tool is downloaded as well, which enables us to interact with the registry via our terminal.
 
+Node provides an EventEmitter class which we can access by requiring in the events core module:
+```js
+// Require in the 'events' core module
+let events = require('events');
+ 
+// Create an instance of the EventEmitter class
+let myEmitter = new events.EventEmitter();
+```
+Each `event emitter` instance has an `.on()` method which assigns a listener callback function to a named event. The .on() method takes as its first argument the name of the event as a string and, as its second argument, the listener callback function.
 
+Each event emitter instance also has an .emit() method which announces a named event has occurred. The .emit() method takes as its first argument the name of the event as a string and, as its second argument, the data that should be passed into the listener callback function.
+```js
+let newUserListener = (data) => {
+  console.log(`We have a new user: ${data}.`);
+};
+ 
+// Assign the newUserListener function as the listener callback for 'new user' events
+myEmitter.on('new user', newUserListener)
+ 
+// Emit a 'new user' event
+myEmitter.emit('new user', 'Lily Pad') //newUserListener will be invoked with 'Lily Pad'
+```
+## Input and Output
 
+In the Node environment, the console is the terminal, and the console.log() method is a “thin wrapper” on the `.stdout.write()` method of the process object. stdout stands for standard output.  
 
+In Node, we can also receive input from a user through the terminal using the stdin.on() method on the process object:
+```js
+process.stdin.on('data', (userInput) => {
+  let input = userInput.toString()
+  console.log(input)
+});
+```
+>Here, we were able to use .on() because under the hood process.stdin is an instance of EventEmitter. When a user enters text into the terminal and hits enter, a 'data' event will be fired and our anonymous listener callback will be invoked. 
 
+The userInput we receive is an instance of the Node Buffer class, so we convert it to a string before printing.
 
+## Errors
 
+The Node environment has all the standard JavaScript errors such as `EvalError`, `SyntaxError`, `RangeError`, `ReferenceError`, `TypeError`, and `URIError` as well as the JavaScript Error class for creating new error instances.  
 
-
-
-
+Within our own code, we can generate errors and throw them, and, with synchronous code in Node, we can use error handling techniques such as try...catch statements.
 
 
 
