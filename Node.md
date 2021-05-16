@@ -1,9 +1,10 @@
 # Content
 
-1.[Introduction](#Introduction)
-2.[NPM](#NPM)
-3.[Input and Output](#Input-and-Output)
+1.[Introduction](#Introduction)  
+2.[NPM](#NPM)  
+3.[Input and Output](#Input-and-Output)  
 4.[Errors](#Errors)
+5.[Filesystem](#Filesystem)
 
 
 ## Introduction
@@ -122,6 +123,84 @@ The userInput we receive is an instance of the Node Buffer class, so we convert 
 The Node environment has all the standard JavaScript errors such as `EvalError`, `SyntaxError`, `RangeError`, `ReferenceError`, `TypeError`, and `URIError` as well as the JavaScript Error class for creating new error instances.  
 
 Within our own code, we can generate errors and throw them, and, with synchronous code in Node, we can use error handling techniques such as try...catch statements.
+
+Many asynchronous Node APIs use error-first callback functions: callback functions which have an error as the first expected argument and the data as the second argument. If the asynchronous task results in an error, it will be passed in as the first argument to the callback function. If no error was thrown, the first argument will be undefined.
+```js
+const errorFirstCallback = (err, data)  => {
+  if (err) {
+    console.log(`There WAS an error: ${err}`);
+  } else {
+     // err was falsy
+      console.log(`There was NO error. Event data: ${data}`);
+  }
+}
+```
+## Filesystem
+
+This technique of isolating some applications from others is known as sandboxing. Sandboxing protects users from malicious programs and invasions of privacy.
+
+In the back-end, however, less restricted interaction with the filesystem is essential. The Node `fs` core module is an API for interacting with the file system. It was modeled after the `POSIX` standard for interacting with the filesystem.
+
+Each method available through the fs module has a synchronous version and an asynchronous version. 
+
+One method available on the fs core module is the `.readFile()` method which reads data from a provided file:
+```js
+const fs = require('fs');
+ 
+let readDataCallback = (err, data) => {
+  if (err) {
+    console.log(`Something went wrong: ${err}`);
+  } else {
+    console.log(`Provided file contained: ${data}`);
+  }
+};
+ 
+fs.readFile('./file.txt', 'utf-8', readDataCallback);
+```
+>We invoked the .readFile() method with three arguments:  
+>>The first argument is a string that contains a path to the file file.txt.  
+>>The second argument is a string specifying the file’s character encoding (usually ‘utf-8’ for text files).  
+>>The third argument is the callback function to be invoked when the asynchronous task of reading from the file system is complete. Node will pass the contents of file.txt into the provided callback as its second argument.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
