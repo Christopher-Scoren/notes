@@ -1,10 +1,14 @@
 # Content
 
+1. [General](#General)
 1. [Web servers](#Web-servers)
   1. [Database](#Database)
   2. [API](#API)
   3. [Authorization and Authentication](#Authorization-and-Authentication)
 
+
+## General
+The collection of technologies used to create the front-end and back-end of a web application is referred to as a `stack`. This is where the term full-stack developer comes from; rather than working in either the front-end or the back-end exclusively, a full-stack developer works in both.
 
 ## Web server
 A web server is a process running on a computer that listens for incoming requests for information over the internet and sends back responses.
@@ -27,5 +31,6 @@ In order to have consistent ways of interacting with data, a back-end will often
 
 ### Authorization and Authentication
 
+`Authentication` is the process of validating the identity of a user. One technique for authentication is to use logins with usernames and passwords.
 
-
+`Authorization` controls which users have access to which resources and actions. Certain application views, like the page to edit a social media personal profile, are only accessible to that user. Other activities, like deleting a post, are often similarly restricted.
