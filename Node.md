@@ -3,8 +3,8 @@
 1.[Introduction](#Introduction)  
 2.[NPM](#NPM)  
 3.[Input and Output](#Input-and-Output)  
-4.[Errors](#Errors)
-5.[Filesystem](#Filesystem)
+4.[Errors](#Errors)  
+5.[Filesystem](#Filesystem)  
 
 
 ## Introduction
@@ -162,19 +162,77 @@ fs.readFile('./file.txt', 'utf-8', readDataCallback);
 >>The second argument is a string specifying the file’s character encoding (usually ‘utf-8’ for text files).  
 >>The third argument is the callback function to be invoked when the asynchronous task of reading from the file system is complete. Node will pass the contents of file.txt into the provided callback as its second argument.  
 
+### Read lines stream
 
+To read files line-by-line, we can use the `.createInterface()` method from the `readline` core module. `.createInterface()` returns an `EventEmitter` set up to emit 'line' events.
+```js
+const readline = require('readline');
+const fs = require('fs');
+ 
+const myInterface = readline.createInterface({
+  input: fs.createReadStream('text.txt')
+});
+ 
+myInterface.on('line', (fileLine) => {
+  console.log(`The line read: ${fileLine}`);
+});
+```
+>We require in the readline and fs core modules.  
+>We assign to myInterface the returned value from invoking readline.createInterface() with an object containing our designated input.  
+>We set our input to fs.createReadStream('text.txt') which will create a stream from the text.txt file.  
+>Next we assign a listener callback to execute when line events are emitted. A 'line' event will be emitted after each line from the file is read.  
+>Our listener callback will log to the console 'The line read: [fileLine]', where [fileLine] is the line just read.  
 
+### writable stream
 
+We can create a writeable stream to a file using the `fs.createWriteStream()` method:  
+```
+const fs = require('fs')
+ 
+const fileStream = fs.createWriteStream('output.txt');
+ 
+fileStream.write('This is the first line!'); 
+fileStream.write('This is the second line!');
+fileStream.end();
+```
+In the code above, we set the output file as output.txt. Then we .write() lines to the file. Unlike a readable stream, which ends when it has no more data to read, a writable stream could remain open indefinitely. We can indicate the end of a writable stream with the .end() method.
 
+## HTTP
 
+A Node core module designed to meet back-end needs is the `http` module.  
+This module contains functions which simplify interacting with HTTP and streamline receiving and responding to requests.  
 
+The `http.createServer()` method returns an instance of an `http.server.` An `http.server` has a method `.listen()` which causes the server to “listen” for incoming connections. When we run **http.createServer()** we pass in a custom callback function (often referred to as the requestListener). This callback function will be triggered once the server is listening and receives a request.
 
+Let’s break down how the requestListener callback function works:
 
+* The function expects two arguments: a request object and a response object.  
+* Each time a request to the ser  ver is made, Node will invoke the provided requestListener callback function, passing in the request and response objects of the incoming request.
+* Request and response objects come with a number of properties and methods of their own, and within the requestListener function, we can access information about the request via the request object passed in  
+* The requestListener is responsible for setting the response header and body.  
+* The requestListener must signal that the interaction is complete by calling the response.end() method.  
 
+```js
+const http = require('http');
+ 
+let requestListener = (request, response) => {
+  response.writeHead(200, {'Content-Type': 'text/plain' });
+  response.write('Hello World!\n');
+  response.end();
+};
+ 
+const server = http.createServer(requestListener);
+ 
+server.listen(3000);
+```
 
+Let’s walk through the above code:
 
-
-
+* We required in the http core module.  
+* We created a server variable assigned to the return value of the http.createServer() method.  
+* We invoked http.createServer() with our requestListener callback. This is similar to running the .on() of an EventEmitter: the requestListener will execute whenever an HTTP request is sent to the server on the correct port.  
+* Within the requestListener callback, we make changes to the response object, response, so that it can send the appropriate information to the client sending the request. The status code 200 means that no errors were encountered. The header communicates that the file type is text, rather than something like audio or compressed data.  
+* The last line starts the server with the port 3000. Every server on a given machine specifies a unique port so that traffic can be correctly routed.  
 
 
 
