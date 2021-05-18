@@ -3,7 +3,7 @@
 1. [Web servers](#Web-servers)
   1. [Database](#Database)
   2. [API](#API)
-  3. [Authorization and Authentication](#Authorization and Authentication)
+  3. [Authorization and Authentication](#Authorization-and-Authentication)
 
 
 ## Web server
