@@ -23,8 +23,9 @@ The internet has three basic parts:
 ![image](https://user-images.githubusercontent.com/55635400/118842364-cf44cb80-b8d1-11eb-92c4-bef4eaa3875d.png)
 
 Tags:
-<h1></h1> - headding (1-6)
-<p></p>   - paragraph
-<a href="something"></a>   - link
-<button></button>
+
+`<h1></h1>`                  - headding (1-6)
+`<p></p>`                    - paragraph
+`<a href="something"></a>`   - link
+`<button></button>`          - button
 
