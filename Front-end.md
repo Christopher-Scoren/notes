@@ -24,8 +24,8 @@ The internet has three basic parts:
 
 Tags:
 
-`<h1></h1>`                  - headding (1-6)
-`<p></p>`                    - paragraph
-`<a href="something"></a>`   - link
-`<button></button>`          - button
+`<h1></h1>`                  - headding (1-6)  
+`<p></p>`                    - paragraph  
+`<a href="something"></a>`   - link  
+`<button></button>`          - button  
 
