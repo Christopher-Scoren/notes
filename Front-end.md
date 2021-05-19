@@ -1,5 +1,6 @@
 # Content
-1. Introduction
+1. [Introduction](#Introduction)
+2. [HTML](#HTML)
 
 
 ## Introduction
@@ -17,4 +18,13 @@ The internet has three basic parts:
 * The backbone consists of long-distance networks — mostly on fiber optic cables — that carry data between data centers and consumers.  
 
 [More about Internet](https://www.vox.com/2014/6/16/18076282/the-internet)
+
+## HTML
+![image](https://user-images.githubusercontent.com/55635400/118842364-cf44cb80-b8d1-11eb-92c4-bef4eaa3875d.png)
+
+Tags:
+<h1></h1> - headding (1-6)
+<p></p>   - paragraph
+<a href="something"></a>   - link
+<button></button>
 
