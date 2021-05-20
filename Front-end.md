@@ -1,6 +1,7 @@
 # Content
 1. [Introduction](#Introduction)
 2. [HTML](#HTML)
+  1. [Table](#table)
 
 
 ## Introduction
@@ -30,3 +31,77 @@ Tags:
 `<button></button>`          - button  
 
 [html5-tag-cheat-sheet-2019.pdf](https://github.com/Christopher-SinCoren/notes/files/6513356/html5-tag-cheat-sheet-2019.pdf)
+
+
+### Table
+![image](https://user-images.githubusercontent.com/55635400/118930267-356f3400-b94e-11eb-90d6-ea7be974f4fa.png)
+
+We can use the scope attribute on <th> elements to indicate whether a <th> element is being used as a "row" heading or a "col" heading.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ship To It - Company Packing List</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato: 100,300,400,700|Luckiest+Guy|Oxygen:300,400" rel="stylesheet">
+  <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+  <ul class="navigation">
+    <li><img src="https://content.codecademy.com/courses/web-101/unit-9/htmlcss1-img_logo-shiptoit.png" height="20px;"></li>
+    <li class="active">Action List</li>
+    <li>Profiles</li>
+    <li>Settings</li>
+  </ul>
+
+  <div class="search">Search the table</div>
+  
+  <table>
+    <thead>
+    <tr>
+      <th scope="col">Company Name</th>
+      <th scope="col">Number of Items to Ship</th>
+      <th scope="col">Next Action</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="2">Adam's Greenworks</td>
+        <td>14</td>
+        <td>Package Items</td>
+      </tr>
+      <tr>
+    <td colspan="2">Send Invoice</td>
+  </tr>
+  <tr>
+    <td>Baker's Bike Shop</td>
+    <td>3</td>
+    <td>Send Invoice</td>
+  </tr>
+  <tr>
+    <td>Miss Sally's Southern</td>
+    <td>4</td>
+    <td>Ship</td>
+  </tr>
+  <tr>
+    <td>Summit Resort Rentals</td>
+    <td>4</td>
+    <td>Ship</td>
+  </tr>
+  <tr>
+    <td>Strike Fitness</td>
+    <td>1</td>
+    <td>Enter Order</td>
+  </tr>
+  </tbody>
+  <tfoot>
+    <td>Total</td>
+    <td>28</td>
+  </tfoot>
+  </table>
+
+
+</body>
+</html>
+```
