@@ -7,7 +7,7 @@
 
 
 ## Introduction
-
+[Content](#content)
 When a server responds to a client, the server specifies a status code as a part of the response.  
 Status codes indicate whether or not the HTTP request was successfully completed and if there was an error, they contain some information about the type of error that happened.  
 The status code helps the browser know how to handle the data that was sent back with the response.
@@ -23,6 +23,7 @@ The internet has three basic parts:
 [More about Internet](https://www.vox.com/2014/6/16/18076282/the-internet)
 
 ## HTML
+[Content](#content)
 ![image](https://user-images.githubusercontent.com/55635400/118842364-cf44cb80-b8d1-11eb-92c4-bef4eaa3875d.png)
 
 Tags:
@@ -36,6 +37,8 @@ Tags:
 
 
 ### Table
+[Content](#content)
+
 ![image](https://user-images.githubusercontent.com/55635400/118930267-356f3400-b94e-11eb-90d6-ea7be974f4fa.png)
 
 We can use the scope attribute on <th> elements to indicate whether a <th> element is being used as a "row" heading or a "col" heading.
@@ -106,9 +109,11 @@ We can use the scope attribute on <th> elements to indicate whether a <th> eleme
 
 </body>
 </html>
+  
 ```
 
 ### Semantic HTML
+[Content](#content)
   
 ```html
 <!DOCTYPE html>
