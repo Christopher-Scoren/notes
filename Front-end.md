@@ -29,3 +29,10 @@ Tags:
 `<a href="something"></a>`   - link  
 `<button></button>`          - button  
 
+```html
+<!DOCUMENT html>
+<html>
+  
+<html[html5-tag-cheat-sheet-2019.pdf](https://github.com/Christopher-SinCoren/notes/files/6513356/html5-tag-cheat-sheet-2019.pdf)
+
+```
