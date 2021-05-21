@@ -3,7 +3,7 @@
 2. [HTML](#HTML)  
   1.[Table](#table)  
   2.[Semantic HTML](#semantic-html)  
-3. xnjnj
+3. CSS
 
 
 ## Introduction
@@ -28,22 +28,20 @@ The internet has three basic parts:
 
 ![image](https://user-images.githubusercontent.com/55635400/118842364-cf44cb80-b8d1-11eb-92c4-bef4eaa3875d.png)
 
-Tags:
-
-`<h1></h1>`                  - headding (1-6)  
-`<p></p>`                    - paragraph  
-`<a href="something"></a>`   - link  
-`<button></button>`          - button  
-
 [html5-tag-cheat-sheet-2019.pdf](https://github.com/Christopher-SinCoren/notes/files/6513356/html5-tag-cheat-sheet-2019.pdf)
 
+### class
+```html
+<p class="smth"></p>
+<p class="one two three">this el has 3 classes</p>
+```
 
 ### Table
 [Content](#content)
 
 ![image](https://user-images.githubusercontent.com/55635400/118930267-356f3400-b94e-11eb-90d6-ea7be974f4fa.png)
 
-We can use the scope attribute on <th> elements to indicate whether a <th> element is being used as a "row" heading or a "col" heading.
+We can use the scope attribute on `<th>` elements to indicate whether a `<th>` element is being used as a "row" heading or a "col" heading.
 
 ```html
 <!DOCTYPE html>
@@ -200,4 +198,156 @@ The `alt` attribute is closely related to the <figcaption> element. alt should s
 </html>
 ```
   
+## CSS
   
+![image](https://user-images.githubusercontent.com/55635400/119096309-1a6af580-ba1c-11eb-86aa-e85c9b10b91e.png)
+
+### internal stylesheet
+```html
+  <head>
+  <style>
+    p {
+      color: red;
+      font-size: 20px;
+    }
+  </style>
+</head>
+```
+  
+### linking stylesheet
+```html
+<link href='https://www.codecademy.com/stylesheets/style.css' rel='stylesheet'>
+```
+
+### selectors types
+```css
+<!-- targeting all el-s -->
+* {
+  color: blue;
+}
+
+<!-- targeting all paragraphs -->
+p {
+  color: green;
+}
+
+<!-- targeting el-s with class="brand" -->
+.brand {
+ color: red;
+}
+
+<!-- targeting el-s with id="brand" -->
+#brand {
+  color: grey;
+}
+
+<!-- targeting el-s with some attribute -->
+[href]{
+   color: magenta;
+}
+```
+And it can get more granular from there by adding type and/or attribute values. One way is by using type[attribute*=value]. In short, this code selects an element where the attribute contains any instance of the specified value. Let’s take a look at an example.
+```html
+<img src='/images/seasons/cold/winter.jpg'>
+<img src='/images/seasons/warm/summer.jpg'>
+```
+```css
+img[src*='winter'] {
+  height: 50px;
+}
+ 
+img[src*='summer'] {
+  height: 100px;
+}
+```
+Factors such as user interaction, site navigation, and position in the DOM can all give elements a different state with pseudo-class.  
+`:focus`, `:visited`, `:disabled`, and `:active` are all pseudo-classes.
+A pseudo-class can be attached to any selector. It is always written as a colon : followed by a name. For example `p:hover`.
+```css
+p:hover {
+  background-color: lime;
+}
+```
+
+### Specificity
+IDs are the most specific selector in CSS, followed by classes, and finally, type.  
+
+### Chainning
+
+```css
+<!-- only the <h1> elements with a class of special -->
+h1.special {
+ 
+}
+```
+### Descendant Combinator
+```html
+<ul class='main-list'>
+  <li> ... </li>
+  <li> ... </li>
+  <li> ... </li>
+</ul>
+```
+```css
+.main-list li {
+ color: white;
+}
+```
+### Multiple Selectors
+```css
+h1, 
+.menu {
+  font-family: Georgia;
+}
+```
+### Visual rules
+
+The `font-family` property defines the typeface of an element.
+`font-size` controls the size of text displayed.
+`font-weight` defines how thin or thick text is displayed.
+The ` property places text in the left, right, or center of its parent container.
+Text can have two different color attributes: `color` and `background-color`. color defines the color of the text, while background-color defines the color behind the text.
+CSS can make an element transparent with the `opacity` property.
+CSS can also set the background of an element to an image with the `background-image` property.
+The `!important` flag will override any style, however it should almost never be used, as it is extremely difficult to override.
+
+```css
+h1 {
+  font-family: Garamond;
+  font-size: 18px;
+   <!--  bold or normal  -->
+  font-weight: bold; 
+  text-align: right;
+<!--  right \ left \ center \ justify  -->
+  color: red;
+  background-color: blue;
+  opacity: 0.5;
+  color: blue !important;
+}
+  .main-banner {
+  background-image: url('https://www.example.com/image.jpg');
+}
+```
+`justify`— spaces out text in order to align with the right and left side of the parent element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
