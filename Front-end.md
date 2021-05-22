@@ -3,7 +3,7 @@
 2. [HTML](#HTML)  
   1.[Table](#table)  
   2.[Semantic HTML](#semantic-html)  
-3. CSS
+3. [CSS](#css)
 
 
 ## Introduction
