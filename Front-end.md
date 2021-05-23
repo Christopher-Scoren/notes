@@ -4,6 +4,7 @@
   1.[Table](#table)  
   2.[Semantic HTML](#semantic-html)  
 3. [CSS](#css)
+  1.[Typography](#typography)
 
 
 ## Introduction
@@ -331,6 +332,69 @@ h1 {
 `justify`— spaces out text in order to align with the right and left side of the parent element.
 
 
+### Typography
+![image](https://user-images.githubusercontent.com/55635400/119250280-a198a480-bba7-11eb-8b85-c63be7cb8c39.png)  
+![image](https://user-images.githubusercontent.com/55635400/119250390-75315800-bba8-11eb-9e98-fe6277d2ae60.png)
+
+<!--  -->
+```css
+p {
+  font-family: Roboto;
+  font-family: 'Times New Roman';
+  font-family: Caslon, Georgia, 'Times New Roman'; <!-- first 2 fonts aren't available then TNR works (most devices have it)-->
+  font-family: Caslon, Georgia, 'Times New Roman', serif; <!-- first 3 fonts aren't available -->
+  
+  font-weight: bold; <!-- normal \ bolder \ lighter-->
+  font-weight: 100; <!-- from 1 to 1000 tho preferably with 100 step-->
+  
+   font-style: italic; <!-- \ normal -->
+   text-transform: uppercase; <!-- \ lowercase -->
+  
+   <!-- TEXT LAYOUT -->
+  letter-spacing: 2px;
+  word-spacing: 0.3em;
+  
+  line-height: 1.4; <!-- how tall we want each line containing our text to be -->
+  
+  text-align: right; <!-- \ center \ left \ justify \ start \ end -->
+}
+```
+Downloading and adding fonts
+
+When you’re done selecting a font and its styles, you can review your selected font family, and a <link> element will be automatically generated for you to use on your site!
+
+* 1st variant
+```html
+<head>
+  <!-- Add the link element for Google Fonts along with other metadata -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+<head>
+```
+```css  
+p {
+  font-family: 'Roboto', sans-serif;
+}
+```
+* 2nd variant
+
+fonts formats
+  
+  *OTF (OpenType Font)
+  *TTF (TrueType Font)
+  *WOFF (Web Open Font Format)
+  *WOFF2 (Web Open Font Format 2)
+
+The different formats are a progression of standards for how fonts will work with different browsers, with WOFF2 being the most progressive. It’s a good idea to include TTF, WOFF, and WOFF2 formats with your @font-face rule to ensure compatibility on all browsers.
+
+Download -> move them to a folder inside your website’s working directory -> css rule:
+```css
+@font-face {
+  font-family: 'MyParagraphFont';
+  src: url('fonts/Roboto.woff2') format('woff2'),
+       url('fonts/Roboto.woff') format('woff'),
+       url('fonts/Roboto.ttf') format('truetype');
+}
+```
 
 
 
