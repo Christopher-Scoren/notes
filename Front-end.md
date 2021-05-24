@@ -3,8 +3,9 @@
 2. [HTML](#HTML)  
   1.[Table](#table)  
   2.[Semantic HTML](#semantic-html)  
-3. [CSS](#css)
-  1.[Typography](#typography)
+3. [CSS](#css)  
+  1.[Typography](#typography)  
+  2.[Box Model](#box-model)
 
 
 ## Introduction
@@ -120,7 +121,7 @@ We can use the scope attribute on `<th>` elements to indicate whether a `<th>` e
 SS
 ![image](https://user-images.githubusercontent.com/55635400/118932528-d101a400-b950-11eb-9550-0d0515cdf6a7.png)
 
-The `<article>` element represents an independent article in a web page. It should only wrap content that can be plucked out of your page and distributed in a completely different context. For instance, an app like Flipboard should be able to grab an <article> element from your site, display it in its own app, and have it make perfect sense to its readers.
+The `<article>` element represents an independent article in a web page. It should only wrap content that can be plucked out of your page and distributed in a completely different context. For instance, an app like Flipboard should be able to grab an `<article>` element from your site, display it in its own app, and have it make perfect sense to its readers.
 
 The `<section>` element is sort of like an `<article>`, except it doesn’t need to make sense outside the context of the document. That is, an app like Flipboard wouldn’t try to pull out all the `<section>`’s of your page and present them as independent pieces of content.
 
@@ -137,13 +138,13 @@ Headers and footers are ways to add extra information to an article, but sometim
 
 The `<time>` element represents either a time of day or a calendar date. Providing a machine-readable date makes it possible for browsers to automatically link it to users’ calendars and helps search engines clearly identify specific dates.
 
-The `<address>` element is like <time> in that it doesn’t deal with the overall structure of a document, but rather embellishes the parent <article> or `<body>` element with some metadata. It defines contact information for the author of the article or web page in question. `<address>` should not be used for arbitrary physical addresses.
+The `<address>` element is like `<time>` in that it doesn’t deal with the overall structure of a document, but rather embellishes the parent `<article>` or `<body>` element with some metadata. It defines contact information for the author of the article or web page in question. `<address>` should not be used for arbitrary physical addresses.
 
-the `<figure>` and `<figcaption>` elements. The former represents a self-contained “figure”, like a diagram, illustration, or even a code snippet. The latter is optional, and it associates a caption with its parent <figure> element.
+the `<figure>` and `<figcaption>` elements. The former represents a self-contained “figure”, like a diagram, illustration, or even a code snippet. The latter is optional, and it associates a caption with its parent `<figure>` element.
 
 A common use case for both of these is to add visible descriptions to the `<img/>` elements in an article
 
-The `alt` attribute is closely related to the <figcaption> element. alt should serve as a text replacement for the image, while `<figcaption>` is a supporting description displayed with either the image or its text-based equivalent.
+The `alt` attribute is closely related to the `<figcaption>` element. alt should serve as a text replacement for the image, while `<figcaption>` is a supporting description displayed with either the image or its text-based equivalent.
 
 ```html
 <!DOCTYPE html>
@@ -396,11 +397,56 @@ Download -> move them to a folder inside your website’s working directory -> c
 }
 ```
 
+### Box model
+
+![image](https://user-images.githubusercontent.com/55635400/119305827-ebe65800-bc71-11eb-8d84-7cb9b17f97ee.png)  
+![image](https://user-images.githubusercontent.com/55635400/119307098-d114e300-bc73-11eb-94a4-4e4c49b17f75.png)
 
 
+```css
+p {
+  height: 80px;
+  width: 240px;
+  
+  border: 3px solid coral; <!-- 3px / thin / medium / thick || none \ dotted \ solid \ etc || any -->
+  border-radius: 5px; <!-- / 50% \\set all four corners.  -->
+  
+  padding: 10px; <!-- + padding-top -right -bottom -left -->
+  padding: 6px 11px 4px 9px; <!-- all 4: top right bottom left -->
+  padding: 5px 10px 20px; <!-- 1st sets -top value (5px), 2nd sets the -left and -right values (10px), and 3rd sets the -bottom value (20px). -->
+  padding: 5px 10px; <!-- top+bottom and right+left -->
+  
+  margin: 20px; <!-- + margin-top -right -bottom -left -->
+  margin: 6px 10px 5px 12px;
+  margin: 5px 12px 4px;
+  margin: 20px 10px;
+  
+  <!-- to center with margin: -->
+  width: 400px; <!-- iportant to set width -->
+  margin: 0 auto;
+  
+  min-width: 300px;
+  max-width: 600px;
+  
+  min-height: 150px;
+  max-height: 300px;
+  
+  overflow: hidden; <!-- scroll / visible -->
+  
+  visibility: hidden; <!-- visible \ collapse -->
+}
 
+  <!-- resetting defaults -->
 
+* {
+  margin: 0;
+  padding: 0;
+}
+```
+* The default border is medium none color, where color is the current color of the element. If width, style, or color are not set in the CSS file, the web browser assigns the default value for that property.
 
+*  What’s the difference between display: none and visibility: hidden? An element with display: none will be completely removed from the web page. An element with visibility: hidden, however, will not be visible on the web page, but the space reserved for it will.
+<!--  -->
 
 
 
