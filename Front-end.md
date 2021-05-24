@@ -5,7 +5,8 @@
   2.[Semantic HTML](#semantic-html)  
 3. [CSS](#css)  
   1.[Typography](#typography)  
-  2.[Box Model](#box-model)
+  2.[Box Model](#box-model)  
+  3.[Display and Positioning](#Display-and-Positioning)
 
 
 ## Introduction
@@ -448,14 +449,128 @@ p {
 *  What’s the difference between display: none and visibility: hidden? An element with display: none will be completely removed from the web page. An element with visibility: hidden, however, will not be visible on the web page, but the space reserved for it will.
 <!--  -->
 
+#### Content box
+![image](https://user-images.githubusercontent.com/55635400/119307836-f3f3c700-bc74-11eb-989d-709b8049ed3b.png)
+In CSS, the `box-sizing` property controls the type of box model the browser should use when interpreting a web page. The default value of this property is `content-box`.
+
+#### Border box
+![image](https://user-images.githubusercontent.com/55635400/119308010-2dc4cd80-bc75-11eb-9fa3-e05cadf92045.png)
+```css
+* {
+  box-sizing: border-box;
+}
+```
+In this box model, the height and width of the box will remain fixed. The border thickness and padding will be included inside of the box, which means the overall dimensions of the box do not change.
+
+### Display and Positioning
+
+`Block-level elements` like these boxes create a block the full width of their parent elements, and they prevent other elements from appearing in the same horizontal space. This is the default position for block-level elements.
+
+```css
+p {
+  position:static; //relative / fixed / absolute / stiky
+}
+```
+
+#### Position Relative
+
+This value allows you to position an element relative to its default static position on the web page.
+```css
+.green-box {
+  background-color: green;
+  position: relative;
+  top: 50px;
+  left: 120px;
+}
+```
+![image](https://user-images.githubusercontent.com/55635400/119310001-d2e0a580-bc77-11eb-94f0-ea108417d811.png)
+
+#### Position: Absolute
+
+When an element’s position is set to absolute, all other elements on the page will ignore the element and act like it is not present on the page. The element will be positioned relative to its closest positioned parent element, while offset properties can be used to determine the final position from there.
+![image](https://user-images.githubusercontent.com/55635400/119310115-fc99cc80-bc77-11eb-9bec-432a95e63f42.png)
+> The “Website building in progress. Please come back later!” text is displaced from its static position at the top left corner of its parent container. It has offset property declarations of top: 300px; and right: 0;, positioning it 300 pixels down, and 0 pixels from the right side of the page.
+
+When an element’s position is set to absolute, as in the last exercise, the element will scroll with the rest of the document when a user scrolls.
+
+#### Position: Fixed
+```css
+.title {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+```
+In the example above, the .title element will remain fixed to its position no matter where the user scrolls on the page.
+![image](https://user-images.githubusercontent.com/55635400/119310349-48e50c80-bc78-11eb-9350-5b23242fb385.png)
 
 
+#### Position: Sticky
+
+The sticky value is another position value that keeps an element in the document flow as the user scrolls, but sticks to a specified position as the page is scrolled further.
+```css
+.box-bottom {
+  background-color: darkgreen;
+  position: sticky;
+  top: 240px;
+}
+```
+![image](https://user-images.githubusercontent.com/55635400/119310473-7631ba80-bc78-11eb-80b1-e5cb18b3f97f.png)
+
+#### z-index
+
+The z-index property controls how far back or how far forward an element should appear on the web page when elements overlap. This can be thought of as the depth of elements, with deeper elements appearing behind shallower elements.
+
+* Default static positioned elements will ignore z-index.
+```css
+.blue-box {
+  background-color: blue;
+  position: relative;
+  z-index: 1;
+}
+ 
+.green-box {
+  background-color: green;
+  position: relative;
+  top: -170px;
+  left: 170px;
+}
+```
+![image](https://user-images.githubusercontent.com/55635400/119310582-9a8d9700-bc78-11eb-8f91-a7847edf7375.png)
+
+#### inline display
+
+ `Inline elements` have a box that wraps tightly around their content, only taking up the amount of space necessary to display their content and not requiring a new line after each element. The height and width of these elements cannot be specified in the CSS document. 
+
+The CSS `display` property provides the ability to make any element an inline element. This includes elements that are not inline by default such as paragraphs, divs, and headings.
+
+```css
+h1 {
+  display: inline; //block / inline-block
+}
+```
+Some elements are not displayed in the same line as the content around them. These are called `block-level` elements. These elements fill the entire width of the page by default, but their width property can also be set. Unless otherwise specified, they are the height necessary to accommodate their content.
+
+`Inline-block` display combines features of both inline and block elements. Inline-block elements can appear next to each other and we can specify their dimensions using the width and height properties. Images are the best example of default inline-block elements.
 
 
+#### float
 
+The float property is commonly used for wrapping text around an image while moving elements left and right for layout purposes is better left to tools like CSS grid and flexbox.
 
+```css
+float: left; //right
+```
 
+#### clear
 
+The float property can also be used to float multiple elements at once. However, when multiple floated elements have different heights, it can affect their layout on the page. Specifically, elements can “bump” into each other and not allow other elements to properly move to the left or right.
+
+The `clear` property specifies how elements should behave when they bump into each other on the page.  
+* left—the left side of the element will not touch any other element within the same containing element.  
+* right—the right side of the element will not touch any other element within the same containing element.  
+* both—neither side of the element will touch any other element within the same containing element.  
+* none—the element can touch either side.  
 
 
 
