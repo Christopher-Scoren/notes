@@ -7,6 +7,7 @@
   1.[Typography](#typography)  
   2.[Box Model](#box-model)  
   3.[Display and Positioning](#Display-and-Positioning)
+  4.[Color wheel](#color-wheel)
 
 
 ## Introduction
@@ -571,6 +572,51 @@ The `clear` property specifies how elements should behave when they bump into ea
 * right—the right side of the element will not touch any other element within the same containing element.  
 * both—neither side of the element will touch any other element within the same containing element.  
 * none—the element can touch either side.  
+
+### Color wheel
+
+![image](https://user-images.githubusercontent.com/55635400/119450333-68de0400-bd3c-11eb-8c9c-d2db9fb10362.png)
+
+![image](https://user-images.githubusercontent.com/55635400/119452810-73e66380-bd3f-11eb-9762-0fce96fba022.png)
+
+
+* The “pure” color is set with the Hue. This is expressed as the angle in degrees around the color wheel.  
+* Saturation refers to the intensity or purity of that hue. Colors with full saturation (100%) are the color itself, colors with no saturation (0%) are completely grayscale.  
+* Lightness refers to the lightness of the color. 0% is black, 100% is white.  
+* A, or alpha, refers to the opacity. 0% is fully transparent, 100% is fully opaque.  
+
+`Warm colors` range between red and yellow, which include various versions of those colors in addition to orange. This also comprises colors such as brown and tan. 
+ in contrast to `warm colors`, there are colors that are considered to be “cool”. These colors range between blue, purple and green. Most gray colors fall into the cool category as well.  
+
+#### color schemes
+
+![image](https://user-images.githubusercontent.com/55635400/119451293-bdce4a00-bd3d-11eb-801b-ec34ca2fcfdf.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
