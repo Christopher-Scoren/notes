@@ -6,8 +6,9 @@
 3. [CSS](#css)  
   1.[Typography](#typography)  
   2.[Box Model](#box-model)  
-  3.[Display and Positioning](#Display-and-Positioning)
+  3.[Display and Positioning](#Display-and-Positioning)  
   4.[Color wheel](#color-wheel)
+  5.Links and buttons
 
 
 ## Introduction
@@ -592,8 +593,35 @@ The `clear` property specifies how elements should behave when they bump into ea
 
 ![image](https://user-images.githubusercontent.com/55635400/119451293-bdce4a00-bd3d-11eb-801b-ec34ca2fcfdf.png)
 
+### Links and buttons
 
+ CSS pseudo-classes: `:link`, `:visited`, `:hover`, `:active` 
+```css
 
+```
+
+`Skeuomorphism` is a term most often used in graphical user interface design to describe interface objects that mimic their real-world counterparts in how they appear and/or how the user can interact with them. A well-known example is the recycle bin icon used for discarding files.
+
+ to implement a bare minimum 3-D button design, the following CSS ruleset could be used:
+```css
+.button {
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 0px 5px;
+}
+ 
+.button:hover {
+  cursor: pointer;
+}
+ 
+.button:active {
+  margin-top: 5px;
+  color: black;
+  box-shadow: 0px 0px;
+}
+```
 
 
 
