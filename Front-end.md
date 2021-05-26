@@ -7,8 +7,9 @@
   1.[Typography](#typography)  
   2.[Box Model](#box-model)  
   3.[Display and Positioning](#Display-and-Positioning)  
-  4.[Color wheel](#color-wheel)
-  5.Links and buttons
+  4.[Color wheel](#color-wheel)  
+  5.Links and buttons  
+  6.[Secondary navigation](#secondary-navigation)  
 
 
 ## Introduction
@@ -623,17 +624,82 @@ The `clear` property specifies how elements should behave when they bump into ea
 }
 ```
 
+### Secondary navigation
 
+The `primary navigation system` typically contains the most important links and buttons that need to be displayed on every single page of the site.
 
+`Secondary navigation`, or breadcrumb navigation, usually consists of a clickable list of pages or attributes that led to the current page. It can help users understand the extent of the site and also where they are currently.
 
+For example, a shopping site may have a breadcrumb trail leading to a pair of shoes like so:
+![image](https://user-images.githubusercontent.com/55635400/119659282-af178e00-be36-11eb-9237-d922ecb02519.png)
 
+```css
+.breadcrumb li+li::before {
+	padding: 10px;
+  content: ">";
+}
+```
+>* The + is called the adjacent sibling combinator; it will only select two li‘s when they are immediately next to each other, with the same parent. The element that actually gets selected is the second element of this sibling pair.  
+>* The ::before part of this selector creates a pseudo-element. The ::before pseudo-element is often used with the content property, to add content that will be displayed just before the selected element.
 
+![image](https://user-images.githubusercontent.com/55635400/119662231-d4f26200-be39-11eb-8863-37393d313113.png)
 
+```css
+.breadcrumb {
+  text-align: left;
+}
+.breadcrumb li {
+  float: left;
+}
 
+.breadcrumb a {
+  color: #fff;
+  background: darkcyan;
+  text-decoration: none;
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin-right: 15px;
+  padding: 0 5px;
+}
 
+.breadcrumb a::before,
+.breadcrumb a::after {
+  content: "";
+  position: absolute;
+  border-color: darkcyan;
+  border-style: solid;
+  border-width: 15px 5px;
+}
 
+.breadcrumb a::before {
+  left: -10px;
+  border-left-color: transparent;
+}
+.breadcrumb a::after {
+  left: 100%;
+  border-color: transparent;
+  border-left-color: darkcyan;
+}
 
+.breadcrumb a:hover {
+  background-color: blue;
+}
+.breadcrumb a:hover::before {
+  border-color: blue;
+  border-left-color: transparent;
+}
+.breadcrumb a:hover::after {
+  border-left-color: blue;
+}
+```
 
+There are three major types of breadcrumbs:
+
+* Location
+* Attribute
+* Path
 
 
 
