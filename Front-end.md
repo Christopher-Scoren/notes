@@ -10,6 +10,7 @@
   4.[Color wheel](#color-wheel)  
   5.Links and buttons  
   6.[Secondary navigation](#secondary-navigation)  
+  7.[Responsive Design](#responsive-design)  
 
 
 ## Introduction
@@ -700,6 +701,135 @@ There are three major types of breadcrumbs:
 * Location
 * Attribute
 * Path
+
+### Responsive design
+
+#### Relative measurements
+
+Responsive design refers to the ability of a website to resize and reorganize its content based on:
+
+* The size of other content on the website.
+* The size of the screen the website is being viewed on.
+
+`em` - represents the font-size of the current element or the default base font-size set by the browser if none is given. For example, if the base font of a browser is 16 pixels (which is normally the default size of text in a browser), then 1 em is equal to 16 pixels. 2 ems would equal 32 pixels, and so on.
+>Historically, the em represented the width of a capital letter M in the typeface and size being used. That is no longer the case.
+```css
+.heading {
+  font-size: 2em;
+}
+```
+>In the example above, no base font has been specified, therefore the font size of the heading element will be set relative to the default font size of the browser. Assuming the default font size is 16 pixels, then the font size of the heading element will be 32 pixels.
+
+```css
+.splash-section {
+  font-size: 18px;
+}
+ 
+.splash-section h1 {
+  font-size: 1.5em;
+}
+```
+>The example above shows how to use ems without relying on the default font size of the browser. Instead, a base font size (18px) is defined for all text within the splash-section element.
+
+`rem` - Rem stands for root em. It acts similar to em, but instead of checking parent elements to size font, it checks the root element. The root element is the `<html>` tag.
+>Most browsers set the font size of `<html>` to 16 pixels, so by default rem measurements will be compared to that value. 
+
+To set a different font size for the root element:
+```css
+html {
+  font-size: 20px;
+}
+ 
+h1 {
+  font-size: 2rem;
+}
+```
+>One advantage of using rems is that all elements are compared to the same font size value, making it easy to predict how large or small font will appear. 
+>>If you are interested in sizing elements consistently across an entire website, the rem measurement is the best unit for the job.   
+>>If you’re interested in sizing elements in comparison to other elements nearby, then the em unit would be better suited for the job.
+
+`%`
+
+`%` - Percentages are often used to size box-model values, like width and height, padding, border, and margins. They can also be used to set positioning properties (top, bottom, left, right).
+```css
+.main {
+  height: 300px;
+  width: 500px;
+}
+ 
+.main .subsection {
+  height: 50%;
+  width: 50%;
+}
+```
+>When percentages are used, elements are sized relative to the dimensions of their parent element (also known as a container). Therefore, the dimensions of the .subsection div will be 150 pixels tall and 250 pixels wide. Be careful, a child element’s dimensions may be set erroneously if the dimensions of its parent element aren’t set first.
+
+>Because the box model includes padding, borders, and margins, setting an element’s width to 100% may cause content to overflow its parent container. While tempting, 100% should only be used when content will not have padding, border, or margin.
+
+!
+
+When percentages are used to set padding and margin, however, they are calculated based only on the width of the parent element.  
+For example, when a property like margin-left is set using a percentage (say 50%), the element will be moved halfway to the right in the parent container (as opposed to the child element receiving a margin half of its parent’s margin).
+
+Vertical padding and margin are also calculated based on the width of the parent.
+
+* When height and width are set using percentages, you learned that the dimensions of child elements are calculated based on the dimensions of the parent element.
+
+* When percentages are used to set padding and margin, however, they are calculated based only on the width of the parent element.
+
+ * When using relative sizing, ems and rems should be used to size text and dimensions on the page related to text size (i.e. padding around text). This creates a consistent layout based on text size. Otherwise, percentages should be used.
+
+#### Scalling images and videos
+
+```css
+.container {
+  width: 50%;
+  height: 200px;
+  overflow: hidden;
+}
+ 
+.container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+```
+>In the example above, .container represents a container div. It is set to a width of 50% (half of the browser’s width, in this example) and a height of 200 pixels. Setting overflow to hidden ensures that any content with dimensions larger than the container will be hidden from view.
+
+>The second CSS rule ensures that images scale with the width of the container. The height property is set to auto, meaning an image’s height will automatically scale proportionally with the width. Finally, the last line will display images as block level elements (rather than inline-block, their default state). This will prevent images from attempting to align with other content on the page (like text), which can add unintended margin to the images.
+
+#### Background images
+
+```css
+body {
+  background-image: url('#');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
