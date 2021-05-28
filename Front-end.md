@@ -11,6 +11,8 @@
   5.Links and buttons  
   6.[Secondary navigation](#secondary-navigation)  
   7.[Responsive Design](#responsive-design)  
+  8.[Media queries](#media-queries)  
+  9.[Undestanding responsiveness](#undestanding-responsiveness)
 
 
 ## Introduction
@@ -809,38 +811,97 @@ body {
 }
 ```
 
+### Media queries
 
+CSS uses `media queries` to adapt a website’s content to different screen sizes. With media queries, CSS can detect the size of the current screen and apply different CSS styles depending on the width of the screen.
+```css
+@media only screen and (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+}
+```
 
+* `@media` — This keyword begins a media query rule and instructs the CSS compiler on how to parse the rest of the rule.
+* `only screen` — Indicates what types of devices should use this rule. In early attempts to target different devices, CSS incorporated different media types (screen, print, handheld). The rationale was that by knowing the media type, the proper CSS rules could be applied. However, “handheld” and “screen” devices began to occupy a much wider range of sizes and having only one CSS rule per media device was not sufficient. screen is the media type always used for displaying content, no matter the type of device.  
+* The `only` keyword is added to indicate that this rule only applies to one media type (screen).
+`and (max-width : 480px)` — This part of the rule is called a media feature, and instructs the CSS compiler to apply the CSS styles to devices with a width of 480 pixels or smaller. Media features are the conditions that must be met in order to render the CSS within a media query.
+* CSS rules are nested inside of the media query’s curly braces. The rules will be applied when the media query is met. In the example above, the text in the body element is set to a font-size of 12px when the user’s screen is less than 480px.
 
+#### Rance
+```css
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    /* ruleset for 320px - 480px */
+}
+```
+OR
+```css
+@media only screen and (min-width: 320px) { 
+    /* ruleset for >= 320px */
+}
+ 
+ 
+@media only screen and (min-width: 480px) { 
+    /* ruleset for >= 480px */
+}
+```
 
+#### Dots per inch (DPI)
 
+Another media feature we can target is screen resolution. Many times we will want to supply higher quality media (images, video, etc.) only to users with screens that can support high resolution media. Targeting screen resolution also helps users avoid downloading high resolution (large file size) images that their screen may not be able to properly display.
+```css
+@media only screen and (min-resolution: 300dpi) {
+    /* CSS for high resolution screens */
+}
+```
 
+#### AND operator
+```css
+@media only screen and (max-width: 480px) and (min-resolution: 300dpi) {
+    /* CSS ruleset */
+}
+```
 
+#### Comma Separated List
 
+If only one of multiple media features in a media query must be met, media features can be separated in a comma separated list.
+```css
+@media only screen and (min-width: 480px), (orientation: landscape) {
+    /* CSS ruleset */
+}
+```
+The points at which media queries are set are called breakpoints. Breakpoints are the screen sizes at which your web page does not appear properly. For example, if we want to target tablets that are in landscape orientation, we can create the following breakpoint:
+```css
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    /* CSS ruleset */
+}
+```
+![image](https://user-images.githubusercontent.com/55635400/119940622-23b60e00-bf98-11eb-9c11-e60b015f273b.png)
 
+### Undestanding responsiveness
 
+1. Define Viewport
 
+Before you do anything else, you have to define the width of the viewport in your HTML. This will ensure that your site has no horizontal scroll - the full site will be visible, and users will not have to zoom on mobile to see the content.
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+```
+2. Include a Browser Reset
+just use this [reset css code](https://meyerweb.com/eric/tools/css/reset/)
+or [this one](http://necolas.github.io/normalize.css/) / [css code](https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css)
 
+3. Reset Border Box
+```css
+Reset Border Box
+```
 
+4.Include jQuery (optional)
+```html
+<script src="js/jquery.min.js"></script>
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+5. Breakpoints
+`mobile first` - The concept is that you build your content to look great for mobile, and scale up from there. This is a good philosophy to work with.
 
 
 
