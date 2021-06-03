@@ -13,6 +13,7 @@
   7.[Responsive Design](#responsive-design)  
   8.[Media queries](#media-queries)  
   9.[Undestanding responsiveness](#undestanding-responsiveness)
+  10.[Grids and spacing](#grids-and-spacing)
 
 
 ## Introduction
@@ -902,6 +903,47 @@ Reset Border Box
 
 5. Breakpoints
 `mobile first` - The concept is that you build your content to look great for mobile, and scale up from there. This is a good philosophy to work with.
+
+### Grids and spacing
+
+`Grids` are made up of intersecting horizontal and vertical lines.
+
+Types of grids:
+* block grid
+* column grid
+
+
+Grid's structure:
+
+![image](https://user-images.githubusercontent.com/55635400/120599341-0c6f9880-c450-11eb-811b-6f305ec7b17c.png)
+
+`Columns` are defined as the vertical sections that span the width of a page. In web design, it’s common to see layouts consisting of 12 or 16 columns, while other may only feature three columns. Defining the number of columns depends on what’s appropriate for your design, device, and or screen viewing size.
+
+a `gutter` is the negative space between each column. Gutters help in ensuring the columns don’t run together, which would negate the purpose of using a column-based grid.
+
+`Margins` appear on the left and right sides of the column-based grid. These ensure the content of your designs doesn’t match up to the edges of the browser window.
+
+`Columns` are the vertical containers that span the width of the page. They can be dependent on each other, meaning they are used to organize related content such as a continuation of a paragraph. They can also be independent of each other, meaning they are used for organizing the layout of unrelated content such as a sidebar. 
+
+>Within a grid, content can span multiple columns. What this means is that a website does not need to maintain the same column layout throughout. For example, a section of a website with a 12 column grid can have content that spans 4 columns, three times.
+
+  * No content can spill into the gutter unless it is using the next column.
+
+`Rows` are the horizontal lines on a grid. Think of rows as invisible boxes that groups content together by height. 
+
+`Whitespace`, or `negative space`, refers to the emptiness between elements. Whether that’s in the gutter of the columns, or additional padding around a block of text.
+
+`passive whitespace` or `micro whitespace` - 
+
+>Used to improve the aesthetics of the layout without guiding the user through a specific reading, flow, or content order, passive whitespace is sometimes referred to as the unconsidered space. The most frequent use of passive whitespace comes within text elements.  
+>>Different font families have varying amounts of passive whitespace and you can control aspects of them within your design by altering CSS properties such as such as line-height or margin when setting type.
+
+`active whitespace` is intentional. Also called `macro whitespace`, active whitespace refers to enhancing the overall page structure through space to emphasize content or guide users from one point to the next.
+
+
+
+
+
 
 
 
