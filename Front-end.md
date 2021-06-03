@@ -12,8 +12,9 @@
   6.[Secondary navigation](#secondary-navigation)  
   7.[Responsive Design](#responsive-design)  
   8.[Media queries](#media-queries)  
-  9.[Undestanding responsiveness](#undestanding-responsiveness)
-  10.[Grids and spacing](#grids-and-spacing)
+  9.[Undestanding responsiveness](#undestanding-responsiveness)  
+  10.[Grids and spacing](#grids-and-spacing)  
+  
 
 
 ## Introduction
@@ -939,6 +940,154 @@ a `gutter` is the negative space between each column. Gutters help in ensuring t
 >>Different font families have varying amounts of passive whitespace and you can control aspects of them within your design by altering CSS properties such as such as line-height or margin when setting type.
 
 `active whitespace` is intentional. Also called `macro whitespace`, active whitespace refers to enhancing the overall page structure through space to emphasize content or guide users from one point to the next.
+
+**Whereas Flexbox is mostly useful for positioning items in a one-dimensional layout, CSS grid is most useful for two-dimensional layouts, providing many tools for aligning and moving elements across both rows and columns.**
+
+#### Creating a grid
+
+* To set up a grid, you need to have both a grid container and grid items. 
+
+The grid container will be a parent element that contains grid items as children and applies overarching styling and positioning to them.
+
+To turn an HTML element into a grid container, you must set the element’s display property to one of two values:
+
+* `grid` — for a block-level grid.
+* `inline-grid` — for an inline grid.
+
+**By default, grids contain only one column.**
+
+define the columns of our grid
+```css
+.grid {
+  display: grid;
+  width: 500px;
+  grid-template-columns: 100px 200px;
+}
+```
+This property creates two changes. First, it defines the number of columns in the grid; in this case, there are two. Second, it sets the width of each column. The first column will be 100 pixels wide and the second column will be 200 pixels wide.
+
+We can also define the size of our columns as a percentage of the entire grid’s width.
+```css
+.grid {
+  display: grid;
+  width: 1000px;
+  grid-template-columns: 20% 50%;
+}
+
+/* mix */
+.grid {
+  display: grid;
+  width: 100px;
+  grid-template-columns: 20px 40% 60px;
+}
+
+/* overflow */
+.grid {
+  display: grid;
+  width: 100px;
+  grid-template-columns: 20px 40% 60px; /* 120px in total */
+}
+```
+
+* `grid-template-rows` - To specify the number and size of the rows
+
+```css
+grid-template-rows: 10% 20% 600px; /* three rows */
+```
+**When using percentages in these two properties, remember that rows are defined as a percentage of the grid’s height, and columns are defined as a percentage of its width.**
+
+* `grid-template` - shorthand for both above
+```css
+.grid{
+    grid-template: 200px 300px / 20% 10% 70%; /* rows / columns */
+}
+```
+
+Grid introduced a new relative sizing unit — `fr`, like `fraction`.
+
+>By using the fr unit, we can define the size of columns and rows as a fraction of the grid’s length and width. This unit was specifically created for use in CSS Grid. Using fr makes it easier to prevent grid items from overflowing the boundaries of the grid. 
+
+```css
+./grid {
+    grid-template: 2fr 1fr 1fr / 1fr 3fr 1fr;
+}
+```
+>In this example, the grid will have three rows and three columns. The rows are splitting up the available 400 pixels of height into four parts. The first row gets two of those parts, the second row gets one, and the third row gets one. Therefore the first row is 200 pixels tall, and the second and third rows are 100 pixels tall.
+
+It is possible to use fr with other units as well. When this happens, each fr represents a fraction of the available space.
+```css
+.grid{
+  display: grid;
+  width: 100px;
+  grid-template-columns: 1fr 60px 1fr;
+}
+```
+
+#### Function
+
+The properties that define the number of rows and columns in a grid can take a `function` as a value. `repeat()` is one of these functions. The repeat() function was created specifically for CSS Grid.
+```css
+.grid {
+  display: grid;
+  width: 300px;
+  grid-template-columns: repeat(3, 100px);
+}
+
+/* same as: */
+  grid-template-columns: 100px 100px 100px;
+```
+Repeat is particularly useful with fr. For example, `repeat(5, 1fr)` would split your table into five equal rows or columns.
+
+Finally, the second parameter of repeat() can have multiple values.
+```css
+  grid-template-columns: repeat(2, 20px 50px)
+```
+This code will create four columns where the first and third columns will be 20 pixels wide and the second and fourth will be 50 pixels wide.
+
+#### minmax function
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: 100px minmax(100px, 500px) 100px;
+}
+```
+>In this example, the first and third columns will always be 100 pixels wide, no matter the size of the grid. The second column, however, will vary in size as the overall grid resizes. The second column will always be between 100 and 500 pixels wide.
+
+#### Grid gap
+```css
+.grid {
+  display: grid;
+  width: 320px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+}
+
+/* shorthand */
+.grid {
+  display: grid;
+  width: 320px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px 10px; /* row + column */
+}
+```
+* It is important to note that grid gap properties does not add space at the beginning or end of the grid. In the example code, our grid will have three columns with two ten-pixel gaps between them.
+
+* Unlike other CSS grid properties, this shorthand does not take a / between values! If only one value is given, it will set the column gap and the row gap to that value.
+
+#### grid items
+
+make single grid items take up multiple rows.
+```css
+.item {
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+```
+>In this example, the HTML element of class item will take up two rows in the grid, rows 1 and 2. The values that grid-row-start and grid-row-end accept are grid lines.  
+>>Row grid lines and column grid lines start at 1 and end at a value that is 1 greater than the number of rows or columns the grid has. For example, if a grid has 5 rows, the grid row lines range from 1 to 6. If a grid has 8 rows, the grid row lines range from 1 to 9.
+
+* It is possible for the value of grid-row-start to be greater than that of grid-row-end. Both properties can also each have negative values. 
 
 
 
