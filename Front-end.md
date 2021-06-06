@@ -1081,13 +1081,261 @@ make single grid items take up multiple rows.
 ```css
 .item {
   grid-row-start: 1;
-  grid-row-end: 3;
+  grid-row-end: 4;
+}
+
+/* shorthand for previous */
+.item {
+  grid-row: 1 / 4;
 }
 ```
 >In this example, the HTML element of class item will take up two rows in the grid, rows 1 and 2. The values that grid-row-start and grid-row-end accept are grid lines.  
 >>Row grid lines and column grid lines start at 1 and end at a value that is 1 greater than the number of rows or columns the grid has. For example, if a grid has 5 rows, the grid row lines range from 1 to 6. If a grid has 8 rows, the grid row lines range from 1 to 9.
 
 * It is possible for the value of grid-row-start to be greater than that of grid-row-end. Both properties can also each have negative values. 
+
+Make single grid item take up multiple columns
+```css
+.item {
+  grid-column: 4 / span 2; /* count 2 rows from 4th */
+}
+
+/* same as */
+.item {
+  grid-column: 4 / 6;
+}
+.item {
+  grid-column-start: 4;
+  grid-column-end: span 2;
+}
+.item {
+  grid-column-start: span 2;
+  grid-column-end: 6;
+}
+```
+
+* refactoring `grid-row` and `grid-column`:
+```css
+.item {
+  grid-area: 2 / 3 / 4 / span 5; /* grid-row-start -> grid-column-start -> grid-row-end -> grid-column-end */
+}
+```
+>In the above example, the item will occupy rows two and three and columns three through eight.
+
+
+#### Grid template areas
+
+The `grid-template-areas` property allows you to name sections of your web page to use as values in the grid-row-start, grid-row-end, grid-column-start,grid-column-end, and grid-area properties. This property is declared on grid containers.
+```html
+<div class="container">
+  <header>Welcome!</header>
+  <nav>Links!</nav>
+  <section class="info">Info!</section>
+  <section class="services">Services!</section>
+  <footer>Contact us!</footer>
+</div>
+```
+```css
+.container {
+  display: grid;
+  max-width: 900px;
+  position: relative;
+  margin: auto;
+  grid-template-areas: "head head"
+                       "nav nav" 
+                       "info services"
+                       "footer footer";
+  grid-template-rows: 300px 120px 800px 120px;
+  grid-template-columns: 1fr 3fr; 
+}
+ 
+header {
+  grid-area: head;
+} 
+ 
+nav {
+  grid-area: nav;
+} 
+ 
+.info {
+  grid-area: info;
+} 
+ 
+.services {
+  grid-area: services;
+}
+ 
+footer {
+  grid-area: footer;
+} 
+```
+* In the example above, the HTML creates a web page with five distinct parts.  
+* In the .container ruleset, the grid-template-areas declaration creates a 2-column, 4-row layout.  
+* The grid-template-rows declaration specifies the height of each of the four rows from top to bottom: 300 pixels, 120 pixels, 800 pixels, and 120 pixels.  
+* The grid-template-columns declaration uses the fr value to cause the left column to use one fourth of the available space on the page and the right column to use three-fourths of the available space on the page.  
+* In each ruleset below .container, we use the grid-area property to tell that section to cover the portion of the page specified. The header element spans the first row and both columns. The nav element spans the second row and both columns. The element with class .info spans the third row and left column. The element with class .services spans the third row and right column. The footer element spans the bottom row and both columns.  
+
+
+#### overlap
+```html
+
+```
+```css
+.container {
+  display: grid;
+  grid-template: repeat(8, 200px) / repeat(6, 100px);
+}
+ 
+.info {
+  grid-area: 1 / 1 / 9 / 4;
+}
+ 
+.services {
+  grid-area: 1 / 4 / 9 / 7;
+}
+ 
+img {
+  grid-area: 2 / 3 / 5 / 5;
+  z-index: 5;
+}
+```
+>The z-index property tells the browser to render the image element on top of the services and info sections so that it is visible.
+
+The z-index property tells the browser to render the image element on top of the services and info sections so that it is visible.
+
+![image](https://user-images.githubusercontent.com/55635400/120916638-750a7f80-c6b3-11eb-97ec-a26be63a88a2.png)
+
+#### Justify items
+
+There are two axes in a grid layout — the column (or block) axis and the row (or inline) axis.  
+The column axis stretches from top to bottom across the web page. The row axis stretches from left to right across the web page.
+
+```html
+<main>
+  <div class="card">Card 1</div>
+  <div class="card">Card 2</div>
+  <div class="card">Card 3</div>
+</main>
+```
+```css
+main {
+  display: grid;
+  grid-template-columns: repeat(3, 400px);
+  justify-items: center; /* start / end / center / stretch */
+}
+```
+
+#### justify-content
+
+We can use justify-content to position the entire grid along the row axis. This property is declared on grid containers.
+```html
+<main>
+  <div class="left">Left</div>
+  <div class="right">Right</div>
+</main>
+```
+```css
+main {
+  display: grid;
+  width: 1000px;
+  grid-template-columns: 300px 300px;
+  grid-template-areas: "left right"; 
+  justify-content: center; /* start / end / center / stretch / space-around / space-between / space-evenly */
+}
+```
+
+#### align-items
+```html
+<main>
+  <div class="card">Card 1</div>
+  <div class="card">Card 2</div>
+  <div class="card">Card 3</div>
+</main>
+```
+```css
+main {
+  display: grid;
+  grid-template-rows: repeat(3, 400px);
+  align-items: center; /* start / end / center / stretch */
+}
+```
+#### align-content
+```html
+<main>
+  <div class="top">Top</div>
+  <div class="bottom">Bottom</div>
+</main>
+```
+```css
+main {
+  display: grid;
+  height: 600px;
+  grid-template-rows: 200px 200px;
+  grid-template-areas: "top"
+                       "bottom"; 
+  align-content: center;
+}
+```
+#### justify-self
+The justify-items and align-items properties specify how all grid items contained within a single container will position themselves along the row and column axes, respectively.
+
+justify-self specifies how an individual element should position itself with respect to the row axis. This property will override justify-items for any item on which it is declared.
+
+align-self specifies how an individual element should position itself with respect to the column axis. This property will override align-items for any item on which it is declared.
+
+align-self and justify-self accept the same values as align-items and justify-items. 
+
+#### Implicit vs. Explicit Grid
+
+The `implicit grid` is an algorithm built into the specification for CSS Grid that determines default behavior for the placement of elements when there are more than fit into the grid specified by the CSS.
+
+The default behavior of the implicit grid is as follows: items fill up rows first, adding new rows as necessary. New grid rows will only be tall enough to contain the content within them. 
+
+#### Grid Auto Rows and Grid Auto Columns
+
+CSS Grid provides two properties to specify the size of grid tracks added implicitly: `grid-auto-rows` and `grid-auto-columns`. These properties are declared on grid containers.
+
+grid-auto-rows specifies the height of implicitly added grid rows. grid-auto-columns specifies the width of implicitly added grid columns.
+
+grid-auto-rows and grid-auto-columns accept the same values as their explicit counterparts, grid-template-rows and grid-template-columns: px, ft, %, repeat();
+
+```html
+<body>
+  <div>Part 1</div>   
+  <div>Part 2</div>
+  <div>Part 3</div>
+  <div>Part 4</div>
+  <div>Part 5</div>
+</body>
+```
+```css
+body {
+  display: grid;
+  grid: repeat(2, 100px) / repeat(2, 150px); 
+  grid-auto-rows: 50px;
+}
+```
+>In the example above, there are 5 <.div>s. However, in the body ruleset, we only specify a 2-row, 2-column grid — four grid cells. The fifth <.div> will be added to an implicit row that will be 50 pixels tall If we did not specify grid-auto-rows, the rows would be auto-adjusted to the height of the content of the grid items.
+
+#### Grid Auto Flow
+
+grid-auto-flow specifies whether new elements should be added to rows or columns, and is declared on grid containers.
+
+grid-auto-flow accepts these values:
+
+* row — specifies the new elements should fill rows from left to right and create new rows when there are too many elements (default)  
+* column — specifies the new elements should fill columns from top to bottom and create new columns when there are too many elements  
+* dense — this keyword invokes an algorithm that attempts to fill holes earlier in the grid layout if smaller elements are added
+
+  * You can pair row or column with dense, like this: grid-auto-flow: row dense;.
+
+
+
+
+
+
+
+
 
 
 
